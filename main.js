@@ -17,6 +17,7 @@ function setup(){
     canvas=createCanvas(800,560);
     canvas.center();
     background("whitesmoke");
+    canvas.mouseReleased(classifyCanvas);
 }
 function clearCanvas() {
     background("whitesmoke");
@@ -27,6 +28,11 @@ function draw() {
         answer="set";
         score++;
         document.getElementById("score").innerHTML="Score:"+score;
+    }
+    strokeWeight(13);
+    stroke(0);
+    if (mouseIsPressed) {
+        line(pmouseX, pmouseY, mouseX, mouseY);
     }
 }
 function check_sketch() {
@@ -41,4 +47,20 @@ function check_sketch() {
         timercheck="";
         updateCanvas();
     }
+}
+function preload(){
+    classifier=ml5.imageClassifier('DoodleNet');
+}
+function classifyCanvas() {
+    classifier.classify(canvas, gotResult);
+}
+function gotResult(error,results){
+    if (error) {
+        console.error(error);
+    }
+    console.log(results);
+    document.getElementById("label").innerHTML="Label:"+results[0].label;
+    document.getElementById("confidence").innerHTML="Confidence:"+Math.round(results[0].confidence*100)+"%";
+    utterThis=new SpeechSynthesisUtterance(results[0].label);
+    synth.speak(utterThis);
 }
