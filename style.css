@@ -1,0 +1,48 @@
+body{
+    background-color:#ffdead;
+    color: black;
+}
+#score{
+    margin-left: 20px;
+    font-size:30px;
+    float: left;
+}
+#time{
+    margin-right: 20px;
+    float: right;
+    font-size: 30px;
+}
+#sketchdrawn{
+    font-size: 30px;
+    flood-color: red;
+}
+canvas{
+    border: 5px dotted royalblue;
+    border-radius: 20px;
+    animation-name: nne;
+    animation-duration: 4s;
+    margin-top: 50px;
+    animation-iteration-count: infinite;
+}
+@keyframes nne{
+    from {box-shadow: 1px 1px 38px royalblue;}
+    to {box-shadow: 1px 1px 38px darkgoldenrod;}
+}
+p{
+    padding-top: 10px;
+    font-size: 25px;
+    color: royalblue;
+    font-family:'Courier New', Courier, monospace;
+}
+h1{
+    color: royalblue;
+}
+#show{
+    float: right;
+    font-family:'Courier New', Courier, monospace;
+}
+h1{
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color: darkgoldenrod;
+}
